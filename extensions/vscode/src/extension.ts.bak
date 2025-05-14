@@ -7,10 +7,6 @@ import { extractMinimalStackTraceInfo } from "core/util/extractMinimalStackTrace
 import { Telemetry } from "core/util/posthog";
 import * as vscode from "vscode";
 
-import {
-  activate as activateCline,
-  deactivate as deactivateCline,
-} from "@/extension";
 import { getExtensionVersion } from "./util/util";
 export { default as buildTimestamp } from "./.buildTimestamp";
 
@@ -21,7 +17,6 @@ async function dynamicImportAndActivate(context: vscode.ExtensionContext) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-  activateCline(context);
   return dynamicImportAndActivate(context).catch((e) => {
     console.log("Error activating extension: ", e);
     Telemetry.capture(
@@ -51,7 +46,6 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {
-  deactivateCline();
   Telemetry.capture(
     "deactivate",
     {

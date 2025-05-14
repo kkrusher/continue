@@ -5,7 +5,7 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -16,9 +16,28 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "noEmitOnError": false,
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "useUnknownInCatchVariables": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["../cline/src/*"],
+      "@api/*": ["../cline/src/api/*"],
+      "@core/*": ["../cline/src/core/*"],
+      "@integrations/*": ["../cline/src/integrations/*"],
+      "@services/*": ["../cline/src/services/*"],
+      "@shared/*": ["../cline/src/shared/*"],
+      "@utils/*": ["../cline/src/utils/*"],
+      "@packages/*": ["../cline/src/packages/*"],
+      "@webview-ui/*": ["../cline/webview-ui/src/*"],
+      "@webview-ui/assets/*": ["../cline/webview-ui/src/assets/*"],
+      "@webview-ui/components/*": ["../cline/webview-ui/src/components/*"],
+      "@webview-ui/context/*": ["../cline/webview-ui/src/context/*"],
+      "@webview-ui/hooks/*": ["../cline/webview-ui/src/hooks/*"],
+      "@webview-ui/services/*": ["../cline/webview-ui/src/services/*"],
+      "@webview-ui/utils/*": ["../cline/webview-ui/src/utils/*"]
+    }
     // Disabled for now since it's causing too many errors
   },
-  "include": ["src", "../src/util/messenger.ts"],
+  "include": ["src", "../src/util/messenger.ts", "../cline/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -19,6 +19,7 @@ import TextDialog from "./dialogs";
 import Footer from "./Footer";
 import { LumpProvider } from "./mainInput/Lump/LumpContext";
 import { useMainEditor } from "./mainInput/TipTapEditor";
+import NavigationButton from "./NavigationButton";
 import { isNewUserOnboarding, useOnboardingCard } from "./OnboardingCard";
 import OSRContextMenu from "./OSRContextMenu";
 import PostHogPageView from "./PosthogPageView";
@@ -230,6 +231,7 @@ const Layout = () => {
 
               <GridDiv className="">
                 <PostHogPageView />
+                <NavigationButton />
                 <Outlet />
                 <FatalErrorIndicator />
                 <Footer />

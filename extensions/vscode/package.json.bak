@@ -141,75 +141,6 @@
           "type": "number",
           "default": 60,
           "description": "The period of time in minutes between automatic syncs."
-        },
-        "cline.vsCodeLmModelSelector": {
-          "type": "object",
-          "properties": {
-            "vendor": {
-              "type": "string",
-              "description": "The vendor of the language model (e.g. copilot)"
-            },
-            "family": {
-              "type": "string",
-              "description": "The family of the language model (e.g. gpt-4)"
-            }
-          },
-          "description": "Settings for VSCode Language Model API"
-        },
-        "cline.enableCheckpoints": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enables extension to save checkpoints of workspace throughout the task. Uses git under the hood which may not work well with large workspaces."
-        },
-        "cline.disableBrowserTool": {
-          "type": "boolean",
-          "default": false,
-          "description": "Disables extension from spawning browser session."
-        },
-        "cline.modelSettings.o3Mini.reasoningEffort": {
-          "type": "string",
-          "enum": [
-            "low",
-            "medium",
-            "high"
-          ],
-          "default": "medium",
-          "description": "Controls the reasoning effort when using an OpenAI reasoning model. Higher values may result in more thorough but slower responses."
-        },
-        "cline.chromeExecutablePath": {
-          "type": "string",
-          "default": null,
-          "description": "Path to Chrome executable for browser use functionality. If not set, the extension will attempt to find or download it automatically."
-        },
-        "cline.preferredLanguage": {
-          "type": "string",
-          "enum": [
-            "English",
-            "Arabic - العربية",
-            "Portuguese - Português (Brasil)",
-            "Czech - Čeština",
-            "French - Français",
-            "German - Deutsch",
-            "Hindi - हिन्दी",
-            "Hungarian - Magyar",
-            "Italian - Italiano",
-            "Japanese - 日本語",
-            "Korean - 한국어",
-            "Polish - Polski",
-            "Portuguese - Português (Portugal)",
-            "Russian - Русский",
-            "Simplified Chinese - 简体中文",
-            "Spanish - Español",
-            "Traditional Chinese - 繁體中文",
-            "Turkish - Türkçe"
-          ],
-          "default": "English",
-          "description": "The language that Cline should use for communication."
-        },
-        "cline.mcpMarketplace.enabled": {
-          "type": "boolean",
-          "default": true,
-          "description": "Controls whether the MCP Marketplace is enabled."
         }
       }
     },
@@ -393,68 +324,6 @@
         "category": "Continue",
         "title": "Focus Continue Chat",
         "group": "Continue"
-      },
-      {
-        "command": "cline.plusButtonClicked",
-        "title": "New Task",
-        "icon": "$(add)"
-      },
-      {
-        "command": "cline.mcpButtonClicked",
-        "title": "MCP Servers",
-        "icon": "$(server)"
-      },
-      {
-        "command": "cline.historyButtonClicked",
-        "title": "History",
-        "icon": "$(history)"
-      },
-      {
-        "command": "cline.popoutButtonClicked",
-        "title": "Open in Editor",
-        "icon": "$(link-external)"
-      },
-      {
-        "command": "cline.accountButtonClicked",
-        "title": "Account",
-        "icon": "$(account)"
-      },
-      {
-        "command": "cline.settingsButtonClicked",
-        "title": "Settings",
-        "icon": "$(settings-gear)"
-      },
-      {
-        "command": "cline.openInNewTab",
-        "title": "Open In New Tab",
-        "category": "Cline"
-      },
-      {
-        "command": "cline.dev.createTestTasks",
-        "title": "Create Test Tasks",
-        "category": "Cline",
-        "when": "cline.isDevMode"
-      },
-      {
-        "command": "cline.addToChat",
-        "title": "Add to Cline",
-        "category": "Cline"
-      },
-      {
-        "command": "cline.addTerminalOutputToChat",
-        "title": "Add to Cline",
-        "category": "Cline"
-      },
-      {
-        "command": "cline.focusChatInput",
-        "title": "Jump to Chat Input",
-        "category": "Cline"
-      },
-      {
-        "command": "cline.generateGitCommitMessage",
-        "title": "Generate Commit Message with Cline",
-        "category": "Cline",
-        "icon": "$(robot)"
       }
     ],
     "keybindings": [
@@ -541,18 +410,6 @@
         "command": "continue.applyCodeFromChat",
         "mac": "alt+a",
         "key": "alt+a"
-      },
-      {
-        "command": "cline.addToChat",
-        "key": "cmd+'",
-        "mac": "cmd+'",
-        "win": "ctrl+'",
-        "linux": "ctrl+'",
-        "when": "editorHasSelection"
-      },
-      {
-        "command": "cline.generateGitCommitMessage",
-        "when": "scmProvider == git"
       }
     ],
     "submenus": [
@@ -577,21 +434,12 @@
         },
         {
           "command": "continue.newSession"
-        },
-        {
-          "command": "cline.generateGitCommitMessage",
-          "when": "scmProvider == git"
         }
       ],
       "editor/context": [
         {
           "submenu": "continue.continueSubMenu",
           "group": "0_acontinue"
-        },
-        {
-          "command": "cline.addToChat",
-          "group": "navigation",
-          "when": "editorHasSelection"
         }
       ],
       "editor/title/run": [
@@ -664,36 +512,6 @@
           "command": "continue.clearConsole",
           "group": "navigation@1",
           "when": "view == continue.continueConsoleView"
-        },
-        {
-          "command": "cline.plusButtonClicked",
-          "group": "navigation@1",
-          "when": "view == claude-dev.SidebarProvider"
-        },
-        {
-          "command": "cline.mcpButtonClicked",
-          "group": "navigation@2",
-          "when": "view == claude-dev.SidebarProvider"
-        },
-        {
-          "command": "cline.historyButtonClicked",
-          "group": "navigation@3",
-          "when": "view == claude-dev.SidebarProvider"
-        },
-        {
-          "command": "cline.popoutButtonClicked",
-          "group": "navigation@4",
-          "when": "view == claude-dev.SidebarProvider"
-        },
-        {
-          "command": "cline.accountButtonClicked",
-          "group": "navigation@5",
-          "when": "view == claude-dev.SidebarProvider"
-        },
-        {
-          "command": "cline.settingsButtonClicked",
-          "group": "navigation@6",
-          "when": "view == claude-dev.SidebarProvider"
         }
       ],
       "editor/title": [
@@ -706,53 +524,12 @@
           "command": "continue.viewHistory",
           "group": "navigation@2",
           "when": "activeWebviewPanelId == continue.continueGUIView"
-        },
-        {
-          "command": "cline.plusButtonClicked",
-          "group": "navigation@1",
-          "when": "activeWebviewPanelId == claude-dev.TabPanelProvider"
-        },
-        {
-          "command": "cline.mcpButtonClicked",
-          "group": "navigation@2",
-          "when": "activeWebviewPanelId == claude-dev.TabPanelProvider"
-        },
-        {
-          "command": "cline.historyButtonClicked",
-          "group": "navigation@3",
-          "when": "activeWebviewPanelId == claude-dev.TabPanelProvider"
-        },
-        {
-          "command": "cline.popoutButtonClicked",
-          "group": "navigation@4",
-          "when": "activeWebviewPanelId == claude-dev.TabPanelProvider"
-        },
-        {
-          "command": "cline.accountButtonClicked",
-          "group": "navigation@5",
-          "when": "activeWebviewPanelId == claude-dev.TabPanelProvider"
-        },
-        {
-          "command": "cline.settingsButtonClicked",
-          "group": "navigation@6",
-          "when": "activeWebviewPanelId == claude-dev.TabPanelProvider"
         }
       ],
       "terminal/context": [
         {
           "command": "continue.debugTerminal",
           "group": "navigation@top"
-        },
-        {
-          "command": "cline.addTerminalOutputToChat",
-          "group": "navigation"
-        }
-      ],
-      "scm/title": [
-        {
-          "command": "cline.generateGitCommitMessage",
-          "group": "navigation",
-          "when": "scmProvider == git"
         }
       ]
     },
@@ -762,11 +539,6 @@
           "id": "continue",
           "title": "Continue",
           "icon": "media/sidebar-icon.png"
-        },
-        {
-          "id": "claude-dev-ActivityBar",
-          "title": "Cline",
-          "icon": "cline/assets/icons/icon.svg"
         }
       ],
       "panel": [
@@ -795,13 +567,6 @@
           "icon": "$(window)",
           "visibility": "visible",
           "when": "config.continue.enableConsole"
-        }
-      ],
-      "claude-dev-ActivityBar": [
-        {
-          "type": "webview",
-          "id": "claude-dev.SidebarProvider",
-          "name": ""
         }
       ]
     },
@@ -873,7 +638,7 @@
     "@types/follow-redirects": "^1.14.4",
     "@types/glob": "^8.0.0",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^22.15.17",
+    "@types/node": "16.x",
     "@types/react-dom": "^18.2.4",
     "@types/request": "^2.48.8",
     "@types/vscode": "1.70",

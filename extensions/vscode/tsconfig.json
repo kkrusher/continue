@@ -10,7 +10,19 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "types": ["mocha"] // This solves conflict between jest and mocha: https://github.com/cypress-io/cypress/issues/7435#issuecomment-631695007
+    "useUnknownInCatchVariables": false,
+    "types": ["mocha"], // This solves conflict between jest and mocha: https://github.com/cypress-io/cypress/issues/7435#issuecomment-631695007
+    "baseUrl": "../../",
+    "paths": {
+      "@/*": ["cline/src/*"],
+      "@api/*": ["cline/src/api/*"],
+      "@core/*": ["cline/src/core/*"],
+      "@integrations/*": ["cline/src/integrations/*"],
+      "@services/*": ["cline/src/services/*"],
+      "@shared/*": ["cline/src/shared/*"],
+      "@utils/*": ["cline/src/utils/*"],
+      "@packages/*": ["cline/src/packages/*"]
+    }
   },
   "include": ["src/**/*", "../../core/**/*.ts", "../../core/**/*.d.ts"],
   // core/test uses @types/jest, which conflicts with @types/mocha

@@ -8,6 +8,7 @@ import ConfigPage from "./pages/config";
 import ErrorPage from "./pages/error";
 import Chat from "./pages/gui";
 import History from "./pages/history";
+import NewPage from "./pages/newPage";
 import Stats from "./pages/stats";
 import { ROUTES } from "./util/navigation";
 
@@ -36,6 +37,10 @@ const router = createMemoryRouter([
       {
         path: ROUTES.CONFIG,
         element: <ConfigPage />,
+      },
+      {
+        path: ROUTES.NEW_PAGE,
+        element: <NewPage />,
       },
     ],
   },

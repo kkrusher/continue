@@ -1,9 +1,13 @@
 const fs = require("fs");
+const path = require("path");
 const { writeBuildTimestamp } = require("./utils");
 
 const esbuild = require("esbuild");
 
 const flags = process.argv.slice(2);
+
+// Resolve paths relative to project root
+const rootDir = path.resolve(__dirname, "../../..");
 
 const esbuildConfig = {
   entryPoints: ["src/extension.ts"],
@@ -16,6 +20,19 @@ const esbuildConfig = {
   loader: {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     ".node": "file",
+  },
+
+  // Path alias resolution
+  resolveExtensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
+  alias: {
+    "@": path.resolve(rootDir, "cline/src"),
+    "@api": path.resolve(rootDir, "cline/src/api"),
+    "@core": path.resolve(rootDir, "cline/src/core"),
+    "@integrations": path.resolve(rootDir, "cline/src/integrations"),
+    "@services": path.resolve(rootDir, "cline/src/services"),
+    "@shared": path.resolve(rootDir, "cline/src/shared"),
+    "@utils": path.resolve(rootDir, "cline/src/utils"),
+    "@packages": path.resolve(rootDir, "cline/src/packages"),
   },
 
   // To allow import.meta.path for transformers.js
