@@ -21,9 +21,10 @@ async function dynamicImportAndActivate(context: vscode.ExtensionContext) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
+  console.log("Activating continue extension");
   activateCline(context);
   return dynamicImportAndActivate(context).catch((e) => {
-    console.log("Error activating extension: ", e);
+    console.log("Error activating continue extension: ", e);
     Telemetry.capture(
       "vscode_extension_activation_error",
       {

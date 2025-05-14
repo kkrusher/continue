@@ -1,4 +1,4 @@
-import App from "../../../cline/webview-ui/src/App";
+// import App from "../../../cline/webview-ui/src/App";
 
 const NewPage = () => {
   return (
@@ -10,7 +10,7 @@ const NewPage = () => {
 
       <div className="w-full max-w-5xl rounded-lg border border-gray-300 bg-white p-4 shadow-md">
         <h2 className="mb-4 text-xl font-semibold">App Component:</h2>
-        <App />
+        {/* <App /> */}
       </div>
     </div>
   );

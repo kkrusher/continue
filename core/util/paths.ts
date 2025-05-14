@@ -174,7 +174,7 @@ export function getTsConfigPath(): string {
             lib: ["DOM", "DOM.Iterable", "ESNext"],
             allowJs: true,
             skipLibCheck: true,
-            esModuleInterop: false,
+            esModuleInterop: true,
             allowSyntheticDefaultImports: true,
             strict: true,
             forceConsistentCasingInFileNames: true,
