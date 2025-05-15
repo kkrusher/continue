@@ -133,12 +133,12 @@ export class ContinueGUIWebviewViewProvider
 
     this.webviewProtocol.webview = panel.webview;
 
+    // <script>const vscode = acquireVsCodeApi();</script>
     return `<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script>const vscode = acquireVsCodeApi();</script>
         <link href="${styleMainUri}" rel="stylesheet">
 
         <title>Continue</title>

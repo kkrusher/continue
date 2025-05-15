@@ -52,18 +52,7 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    heroui({
-      defaultTheme: "vscode",
-      themes: {
-        vscode: {
-          colors: {
-            background: "",
-          },
-        },
-      },
-    }),
-  ],
+  plugins: [heroui()],
   corePlugins: {
     preflight: false,
   },
