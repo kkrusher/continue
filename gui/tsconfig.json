@@ -38,17 +38,11 @@
       "@shared/*": ["../cline/src/shared/*"],
       "@utils/*": ["../cline/src/utils/*"],
       "@packages/*": ["../cline/src/packages/*"],
-      "@webview-ui/*": ["../cline/webview-ui/src/*"],
-      "@webview-ui/assets/*": ["../cline/webview-ui/src/assets/*"],
-      "@webview-ui/components/*": ["../cline/webview-ui/src/components/*"],
-      "@webview-ui/context/*": ["../cline/webview-ui/src/context/*"],
-      "@webview-ui/hooks/*": ["../cline/webview-ui/src/hooks/*"],
-      "@webview-ui/services/*": ["../cline/webview-ui/src/services/*"],
-      "@webview-ui/utils/*": ["../cline/webview-ui/src/utils/*"]
+      "@webview-ui/*": ["./src/cline-webview-ui-src/*"]
     }
     // Disabled for now since it's causing too many errors
   },
-  "include": ["src", "../src/util/messenger.ts", "../cline/**/*"],
+  "include": ["src", "../src/util/messenger.ts", "../cline/src/**/*"],
   "exclude": ["../cline/**/*.test.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

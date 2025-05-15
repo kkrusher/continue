@@ -1,3 +1,5 @@
+// import { HeroUIProvider } from "@heroui/react";
+// import { Providers } from "@webview-ui/Providers";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import Layout from "./components/Layout";
 import { MainEditorProvider } from "./components/mainInput/TipTapEditor";
@@ -11,7 +13,6 @@ import History from "./pages/history";
 import NewPage from "./pages/newPage";
 import Stats from "./pages/stats";
 import { ROUTES } from "./util/navigation";
-
 const router = createMemoryRouter([
   {
     path: ROUTES.HOME,
@@ -55,7 +56,9 @@ function App() {
     <VscThemeProvider>
       <MainEditorProvider>
         <SubmenuContextProvidersProvider>
+          {/* <Providers> */}
           <RouterProvider router={router} />
+          {/* </Providers> */}
         </SubmenuContextProvidersProvider>
       </MainEditorProvider>
       <ParallelListeners />
