@@ -9,14 +9,12 @@ const NavigationButton = () => {
   };
 
   return (
-    <div className="my-4 flex justify-center">
-      <button
-        onClick={handleClick}
-        className="rounded bg-blue-500 px-4 py-2 text-white transition-colors hover:bg-blue-600"
-      >
-        前往新页面
-      </button>
-    </div>
+    <button
+      onClick={handleClick}
+      className="fixed bottom-4 left-1/2 -translate-x-1/2 rounded bg-blue-500 px-4 py-1 text-white transition-colors hover:bg-blue-600"
+    >
+      前往新页面
+    </button>
   );
 };
 
