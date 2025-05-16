@@ -16,25 +16,7 @@ export default defineConfig({
       "@shared": resolve(__dirname, "../cline/src/shared"),
       "@utils": resolve(__dirname, "../cline/src/utils"),
       "@packages": resolve(__dirname, "../cline/src/packages"),
-      "@webview-ui": resolve(__dirname, "../cline/webview-ui/src"),
-      "@webview-ui/assets": resolve(
-        __dirname,
-        "../cline/webview-ui/src/assets",
-      ),
-      "@webview-ui/components": resolve(
-        __dirname,
-        "../cline/webview-ui/src/components",
-      ),
-      "@webview-ui/context": resolve(
-        __dirname,
-        "../cline/webview-ui/src/context",
-      ),
-      "@webview-ui/hooks": resolve(__dirname, "../cline/webview-ui/src/hooks"),
-      "@webview-ui/services": resolve(
-        __dirname,
-        "../cline/webview-ui/src/services",
-      ),
-      "@webview-ui/utils": resolve(__dirname, "../cline/webview-ui/src/utils"),
+      "@webview-ui": resolve(__dirname, "./src/cline-webview-ui-src"),
     },
   },
   build: {
