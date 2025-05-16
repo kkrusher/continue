@@ -78,3 +78,9 @@ class VSCodeAPIWrapper {
 
 // Exports class singleton to prevent multiple invocations of acquireVsCodeApi.
 // export const vscode = new VSCodeAPIWrapper();
+// export const vscode = vscode;
+
+declare const vscode: any;
+
+const vscodeInstance = vscode; // 访问全局的 vscode
+export { vscodeInstance as vscode }; // 从这个模块导出，别名为 vscode
