@@ -4,29 +4,24 @@ const { rimrafSync } = require("rimraf");
 const tar = require("tar");
 const { RIPGREP_VERSION, TARGET_TO_RIPGREP_RELEASE } = require("./targets");
 const AdmZip = require("adm-zip");
+const { execSync } = require('child_process');
 
 const RIPGREP_BASE_URL = `https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}`;
 
 /**
- * Downloads a file from a URL to a specified path
+ * Downloads a file from a URL to a specified path using wget
  *
  * @param {string} url - The URL to download from
  * @param {string} destPath - The destination path for the downloaded file
  * @returns {Promise<void>}
  */
 async function downloadFile(url, destPath) {
-  // Use the built-in fetch API instead of node-fetch
-  const response = await fetch(url, {
-    redirect: "follow", // Automatically follow redirects
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to download file, status code: ${response.status}`);
+  try {
+    // 使用 wget 下载文件
+    execSync(`wget -O "${destPath}" "${url}"`, { stdio: 'inherit' });
+  } catch (error) {
+    throw new Error(`Failed to download file: ${error.message}`);
   }
-
-  // Get the response as an array buffer and write it to the file
-  const buffer = await response.arrayBuffer();
-  fs.writeFileSync(destPath, Buffer.from(buffer));
 }
 
 /**
