@@ -41,6 +41,8 @@ import { VsCodeIde } from "../VsCodeIde";
 import { ConfigYamlDocumentLinkProvider } from "./ConfigYamlDocumentLinkProvider";
 import { VsCodeMessenger } from "./VsCodeMessenger";
 
+import { ErrorService } from "@/services/error/ErrorService";
+import { Logger } from "@services/logging/Logger";
 import type { VsCodeWebviewProtocol } from "../webviewProtocol";
 
 export class VsCodeExtension {
@@ -90,10 +92,21 @@ export class VsCodeExtension {
     const configHandlerPromise = new Promise<ConfigHandler>((resolve) => {
       resolveConfigHandler = resolve;
     });
+
+    // todo
+    let outputChannel: vscode.OutputChannel;
+    outputChannel = vscode.window.createOutputChannel("Cline");
+    context.subscriptions.push(outputChannel);
+
+    ErrorService.initialize();
+    Logger.initialize(outputChannel);
+    Logger.log("Cline extension activated");
     this.sidebar = new ContinueGUIWebviewViewProvider(
       configHandlerPromise,
       this.windowId,
       this.extensionContext,
+      context,
+      outputChannel,
     );
 
     // Sidebar

@@ -7,6 +7,7 @@ import * as vscode from "vscode";
 
 import { IMessenger } from "../../../core/protocol/messenger";
 
+import { Controller } from "@/core/controller";
 import { handleLLMError } from "./util/errorHandling";
 import { showFreeTrialLoginMessage } from "./util/messages";
 
@@ -53,7 +54,8 @@ export class VsCodeWebviewProtocol
 
     const handleMessage = async (msg: Message): Promise<void> => {
       if (!("messageType" in msg) || !("messageId" in msg)) {
-        throw new Error(`Invalid webview protocol msg: ${JSON.stringify(msg)}`);
+        this.controller.handleWebviewMessage(msg);
+        // throw new Error(`Invalid webview protocol msg: ${JSON.stringify(msg)}`);
       }
 
       const respond = (message: any) =>
@@ -157,7 +159,10 @@ export class VsCodeWebviewProtocol
     this._webviewListener = this._webview.onDidReceiveMessage(handleMessage);
   }
 
-  constructor(private readonly reloadConfig: () => void) {}
+  constructor(
+    private readonly reloadConfig: () => void,
+    private readonly controller: Controller,
+  ) {}
 
   invoke<T extends keyof FromWebviewProtocol>(
     messageType: T,

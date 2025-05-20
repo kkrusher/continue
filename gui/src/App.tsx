@@ -10,7 +10,7 @@ import ConfigPage from "./pages/config";
 import ErrorPage from "./pages/error";
 import Chat from "./pages/gui";
 import History from "./pages/history";
-import NewPage from "./pages/newPage";
+import CLinePage from "./pages/clinePage";
 import Stats from "./pages/stats";
 import { ROUTES } from "./util/navigation";
 const router = createMemoryRouter([
@@ -41,7 +41,7 @@ const router = createMemoryRouter([
       },
       {
         path: ROUTES.NEW_PAGE,
-        element: <NewPage />,
+        element: <CLinePage />,
       },
     ],
   },
