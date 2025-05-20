@@ -1,6 +1,10 @@
 export const LINKS = {
-	DOCUMENTATION: {
-		REMOTE_MCP_SERVER_DOCS: "https://docs.cline.bot/mcp-servers/connecting-to-a-remote-server",
-		LOCAL_MCP_SERVER_DOCS: "https://docs.cline.bot/mcp-servers/configuring-mcp-servers#editing-mcp-settings-files",
-	},
-}
+  DOCUMENTATION: {
+    REMOTE_MCP_SERVER_DOCS:
+      "https://docs.cline.bot/mcp-servers/connecting-to-a-remote-server",
+    LOCAL_MCP_SERVER_DOCS:
+      "https://docs.cline.bot/mcp-servers/configuring-mcp-servers#editing-mcp-settings-files",
+  },
+};
+
+export const VIEW_TOP_SPACING = 60.5;

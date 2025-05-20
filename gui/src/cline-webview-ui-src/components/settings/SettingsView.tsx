@@ -14,6 +14,7 @@ import {
 import { vscode } from "@webview-ui/utils/vscode";
 import { memo, useCallback, useEffect, useState } from "react";
 import { useEvent } from "react-use";
+import { VIEW_TOP_SPACING } from "../../constants";
 import { TabButton } from "../mcp/configuration/McpConfigurationView";
 import ApiOptions from "./ApiOptions";
 import BrowserSettingsSection from "./BrowserSettingsSection";
@@ -164,7 +165,16 @@ const SettingsView = ({ onDone }: SettingsViewProps) => {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 top-0 flex flex-col overflow-hidden pb-0 pl-5 pr-0 pt-[10px]">
+    <div
+      style={{
+        position: "fixed",
+        top: VIEW_TOP_SPACING,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      }}
+      className="flex flex-col overflow-hidden pb-0 pl-5 pr-0 pt-[10px]"
+    >
       <div className="mb-[13px] flex items-center justify-between pr-[17px]">
         <h3 className="m-0 text-[var(--vscode-foreground)]">Settings</h3>
         <VSCodeButton onClick={() => handleSubmit(false)}>Save</VSCodeButton>

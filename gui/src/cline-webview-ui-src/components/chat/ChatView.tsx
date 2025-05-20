@@ -33,6 +33,7 @@ import rehypeRemark from "rehype-remark";
 import remarkStringify from "remark-stringify";
 import styled from "styled-components";
 import { unified } from "unified";
+import { VIEW_TOP_SPACING } from "../../constants";
 import HomeHeader from "../welcome/HomeHeader";
 
 interface ChatViewProps {
@@ -880,7 +881,7 @@ const ChatView = ({
       debounce(
         () => {
           virtuosoRef.current?.scrollTo({
-            top: Number.MAX_SAFE_INTEGER,
+            top: VIEW_TOP_SPACING,
             behavior: "smooth",
           });
         },
@@ -892,7 +893,7 @@ const ChatView = ({
 
   const scrollToBottomAuto = useCallback(() => {
     virtuosoRef.current?.scrollTo({
-      top: Number.MAX_SAFE_INTEGER,
+      top: VIEW_TOP_SPACING,
       behavior: "auto", // instant causes crash
     });
   }, []);
@@ -1048,7 +1049,7 @@ const ChatView = ({
     <div
       style={{
         position: "fixed",
-        top: 80,
+        top: VIEW_TOP_SPACING,
         left: 0,
         right: 0,
         bottom: 0,

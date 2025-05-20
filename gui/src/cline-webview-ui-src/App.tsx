@@ -1,12 +1,14 @@
 import { ExtensionMessage } from "@shared/ExtensionMessage";
 import { useCallback, useEffect, useState } from "react";
 import { useEvent } from "react-use";
+import NavigationButton from "../components/NavigationButton";
 import AccountView from "./components/account/AccountView";
 import ChatView from "./components/chat/ChatView";
 import HistoryView from "./components/history/HistoryView";
 import McpView from "./components/mcp/configuration/McpConfigurationView";
 import SettingsView from "./components/settings/SettingsView";
 import WelcomeView from "./components/welcome/WelcomeView";
+import { VIEW_TOP_SPACING } from "./constants";
 import { useExtensionState } from "./context/ExtensionStateContext";
 // import { Providers } from "./Providers"
 import { vscode } from "./utils/vscode";
@@ -24,6 +26,7 @@ const AppContent = () => {
   const [showHistory, setShowHistory] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
   const [showAnnouncement, setShowAnnouncement] = useState(false);
+  const [showChat, setShowChat] = useState(true);
 
   const { setShowMcp, setMcpTab } = useExtensionState();
 
@@ -46,8 +49,16 @@ const AppContent = () => {
       showMcp,
       showAccount,
       showAnnouncement,
+      showChat,
     });
-  }, [showSettings, showHistory, showMcp, showAccount, showAnnouncement]);
+  }, [
+    showSettings,
+    showHistory,
+    showMcp,
+    showAccount,
+    showAnnouncement,
+    showChat,
+  ]);
 
   const closeMcpView = useCallback(() => {
     console.log("[DEBUG] Closing MCP view");
@@ -69,6 +80,7 @@ const AppContent = () => {
               setShowHistory(false);
               closeMcpView();
               setShowAccount(false);
+              setShowChat(false);
               break;
             case "historyButtonClicked":
               console.log("[DEBUG] History button clicked");
@@ -76,6 +88,7 @@ const AppContent = () => {
               setShowHistory(true);
               closeMcpView();
               setShowAccount(false);
+              setShowChat(false);
               break;
             case "mcpButtonClicked":
               console.log("[DEBUG] MCP button clicked with tab:", message.tab);
@@ -86,6 +99,7 @@ const AppContent = () => {
               }
               setShowMcp(true);
               setShowAccount(false);
+              setShowChat(false);
               break;
             case "accountButtonClicked":
               console.log("[DEBUG] Account button clicked");
@@ -93,6 +107,7 @@ const AppContent = () => {
               setShowHistory(false);
               closeMcpView();
               setShowAccount(true);
+              setShowChat(false);
               break;
             case "chatButtonClicked":
               console.log("[DEBUG] Chat button clicked");
@@ -100,6 +115,7 @@ const AppContent = () => {
               setShowHistory(false);
               closeMcpView();
               setShowAccount(false);
+              setShowChat(true);
               break;
           }
           break;
@@ -133,7 +149,44 @@ const AppContent = () => {
     showHistory,
     showMcp,
     showAccount,
+    showChat,
   });
+
+  const openSettings = () => {
+    console.log("[DEBUG] Settings button clicked directly");
+    setShowSettings(true);
+    setShowHistory(false);
+    closeMcpView();
+    setShowAccount(false);
+    setShowChat(false);
+  };
+
+  const openHistory = () => {
+    console.log("[DEBUG] History button clicked directly");
+    setShowSettings(false);
+    setShowHistory(true);
+    closeMcpView();
+    setShowAccount(false);
+    setShowChat(false);
+  };
+
+  const openMcp = () => {
+    console.log("[DEBUG] MCP button clicked directly");
+    setShowSettings(false);
+    setShowHistory(false);
+    setShowMcp(true);
+    setShowAccount(false);
+    setShowChat(false);
+  };
+
+  const openChat = () => {
+    console.log("[DEBUG] Chat button clicked directly");
+    setShowSettings(false);
+    setShowHistory(false);
+    closeMcpView();
+    setShowAccount(false);
+    setShowChat(true);
+  };
 
   return (
     <>
@@ -141,6 +194,34 @@ const AppContent = () => {
         <WelcomeView />
       ) : (
         <>
+          {/* Navigation bar with mode toggle and feature buttons */}
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: `${VIEW_TOP_SPACING}px`,
+              backgroundColor: "var(--vscode-panel-background)",
+              zIndex: 100,
+              boxSizing: "border-box",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <NavigationButton
+              openSettings={openSettings}
+              openHistory={openHistory}
+              openMcp={openMcp}
+              openChat={openChat}
+              showSettings={showSettings}
+              showHistory={showHistory}
+              showMcp={showMcp}
+              showChat={showChat}
+            />
+          </div>
+
           {showSettings && <SettingsView onDone={hideSettings} />}
           {showHistory && <HistoryView onDone={() => setShowHistory(false)} />}
           {showMcp && <McpView initialTab={mcpTab} onDone={closeMcpView} />}
@@ -153,8 +234,11 @@ const AppContent = () => {
               closeMcpView();
               setShowAccount(false);
               setShowHistory(true);
+              setShowChat(false);
             }}
-            isHidden={showSettings || showHistory || showMcp || showAccount}
+            isHidden={
+              showSettings || showHistory || showMcp || showAccount || !showChat
+            }
             showAnnouncement={showAnnouncement}
             hideAnnouncement={() => {
               console.log("[DEBUG] Hiding announcement");

@@ -762,11 +762,6 @@
           "id": "continue",
           "title": "Continue",
           "icon": "media/sidebar-icon.png"
-        },
-        {
-          "id": "claude-dev-ActivityBar",
-          "title": "Cline",
-          "icon": "cline/assets/icons/icon.svg"
         }
       ],
       "panel": [
@@ -795,13 +790,6 @@
           "icon": "$(window)",
           "visibility": "visible",
           "when": "config.continue.enableConsole"
-        }
-      ],
-      "claude-dev-ActivityBar": [
-        {
-          "type": "webview",
-          "id": "claude-dev.SidebarProvider",
-          "name": ""
         }
       ]
     },
