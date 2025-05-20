@@ -1,6 +1,5 @@
-// import { HeroUIProvider } from "@heroui/react";
-// import { Providers } from "@webview-ui/Providers";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
+import AppContent from "./cline-webview-ui-src/App";
 import Layout from "./components/Layout";
 import { MainEditorProvider } from "./components/mainInput/TipTapEditor";
 import { SubmenuContextProvidersProvider } from "./context/SubmenuContextProviders";
@@ -10,9 +9,9 @@ import ConfigPage from "./pages/config";
 import ErrorPage from "./pages/error";
 import Chat from "./pages/gui";
 import History from "./pages/history";
-import CLinePage from "./pages/clinePage";
 import Stats from "./pages/stats";
 import { ROUTES } from "./util/navigation";
+
 const router = createMemoryRouter([
   {
     path: ROUTES.HOME,
@@ -40,8 +39,9 @@ const router = createMemoryRouter([
         element: <ConfigPage />,
       },
       {
-        path: ROUTES.NEW_PAGE,
-        element: <CLinePage />,
+        path: ROUTES.CLINE_PAGE,
+        // element: <ClinePage />,
+        element: <AppContent />,
       },
     ],
   },
@@ -56,9 +56,7 @@ function App() {
     <VscThemeProvider>
       <MainEditorProvider>
         <SubmenuContextProvidersProvider>
-          {/* <Providers> */}
           <RouterProvider router={router} />
-          {/* </Providers> */}
         </SubmenuContextProvidersProvider>
       </MainEditorProvider>
       <ParallelListeners />

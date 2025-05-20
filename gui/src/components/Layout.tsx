@@ -231,8 +231,20 @@ const Layout = () => {
 
               <GridDiv className="">
                 <PostHogPageView />
-                <NavigationButton />
-                <Outlet />
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    height: "100%",
+                  }}
+                >
+                  <NavigationButton />
+                  <div
+                    style={{ flex: 1, overflow: "auto", paddingTop: "1rem" }}
+                  >
+                    <Outlet />
+                  </div>
+                </div>
                 <FatalErrorIndicator />
                 <Footer />
               </GridDiv>

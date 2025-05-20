@@ -2,6 +2,6 @@
 export const ROUTES = {
   HOME: "/",
   CONFIG: "/config",
-  NEW_PAGE: "/new-page",
+  CLINE_PAGE: "/cline-page",
   // EXAMPLE_ROUTE_WITH_PARAMS: (params: ParamsType) => `/route/${params}`,
 };
