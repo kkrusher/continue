@@ -1,7 +1,7 @@
 import { ExtensionMessage } from "@shared/ExtensionMessage";
 import { useCallback, useEffect, useState } from "react";
 import { useEvent } from "react-use";
-import NavigationButton from "../components/NavigationButton";
+import Navigation from "../components/Navigation";
 import AccountView from "./components/account/AccountView";
 import ChatView from "./components/chat/ChatView";
 import HistoryView from "./components/history/HistoryView";
@@ -210,7 +210,7 @@ const AppContent = () => {
               justifyContent: "center",
             }}
           >
-            <NavigationButton
+            <Navigation
               openSettings={openSettings}
               openHistory={openHistory}
               openMcp={openMcp}
